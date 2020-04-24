@@ -10,6 +10,7 @@ define G = Character("Giorno")
 define B = Character("Bucciarati")
 
 
+
 # The game starts here.
 
 label start:
