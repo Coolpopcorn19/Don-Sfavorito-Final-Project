@@ -29,8 +29,12 @@
 #   <- INDENT DIALOGUE AND SCENES BY ONE TAB
 
 #DECLARE VARIABLES HERE
-$choice1var
-$choice2var
+
+default trueMobster = 0
+
+default choice1var = 0
+default choice2var = 0
+default choice3var = 0
 
 #DECLARE CHARACTERS HERE
 
@@ -47,7 +51,7 @@ define D = Character("Dio")
 label start:
 
 #START SCENE 1
-    #play music "audio/track1.mp3" #fadeout 1
+    #play music "audio/track1.mp3" fadeout 1
 
     scene bg hospital2
     with fade
@@ -102,12 +106,13 @@ label choice1_done:
 
     D "They’re all looking for my successor, but I told them I was done, and now..."
 
-    g "Tears roll down his eyes but his gaze remains steady on you."
+    g "Tears roll down his eyes but his gaze remains steady on me."
 
     D "Now they’re all looking to you, I tried..."
 
     g "His eyes flutter, then widen, then flutter again. His hand flies to his chest, he’s clearly trying to regain control of his breathing."
 
+#CHOICE 2
 menu:
         "\"Hey pops just take it easy\"":
             jump choice2_1
@@ -135,11 +140,51 @@ label choice2_done:
 
     g "His breathing relaxes and he appears to drift off to sleep."
 
+#CHOICE 3
+menu:
+        "\"I love you, Dad\"":
+            jump choice3_1
+
+        "*Remain silent*":
+            jump choice3_2
+
+        "\"Your weakness ate you alive. I care for you, but this was your path.\"":
+            jump choice3_3
 
 
+label choice3_1:
+        $choice3var = 1
 
+        jump choice3_done
 
+label choice3_2:
+        $choice3var = 2
 
+        jump choice3_done
+
+label choice3_3:
+        $choice3var = 3
+        $trueMobster += 1;
+
+        jump choice3_done
+
+#CONTINUE
+label choice3_done:
+
+    #play music "audio/track2.mp3" fadeout 1
+
+    scene bg courtyard
+    with fade
+
+    g "You do all the boring but heart breaking shit required after someone you love dies."
+    g "It was in his will to be cremated so you respect that. There is no funeral, just a wake."
+    g "The only people who show, aside from you, is your sister that became a lawyer off of Dads money then disavowed him, and his crew."
+    g "You share some nice words with her, you know her going straight was everything your dad wanted for her, even if it cost them their relationship."
+    g "You share two rounds of drinks with her while you reminisce about the past."
+    g "She has two drinks thats are far two blue and fruity for your taste. You have two Rum and Cokes."
+    g "It's a bit childish for your taste, but you figure today is about the past, so might as well."
+    g "You let your sister drive home without commenting about driving drunk. Its her fathers funeral, you know the grief will be sobering enough to keep her safe."
+    g "Once you finish your conversation you see your father's old crew begin to slowly surround you. They silently gesture for you to enter a car."
 
 
 
