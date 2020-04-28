@@ -259,5 +259,6 @@ label choice4_done:
 
 
 #GAME END
+    g "You've reached the end of the script, for now."
     g "Thanks for playing!"
 return
