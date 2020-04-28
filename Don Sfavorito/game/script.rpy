@@ -37,6 +37,19 @@ default choice2var = 0
 default choice3var = 0
 default choice4var = 0
 
+
+#DECLARE TRANSFORMS HERE
+
+transform left:
+    xalign 0.0
+    yalign 1.0
+transform center:
+    xalign 0.5
+    yalign 1.0
+transform right:
+    xalign 1.0
+    yalign 1.0
+
 #DECLARE CHARACTERS HERE
 
 
@@ -45,6 +58,10 @@ define G = Character("Giorno") #USED FOR GIORNO'S DIALOGUE
 
 define B = Character("Bucciarati")
 define M = Character("Mista")
+define A = Character("Abbacchio")
+define N = Character("Narancia")
+define F = Character("Fugo")
+define T = Character("Trish")
 
 define D = Character("Dio")
 
@@ -53,10 +70,12 @@ define D = Character("Dio")
 label start:
 
 #START SCENE 1
-    #play music "audio/track1.mp3" fadeout 1
+    play music "audio/track1.ogg" fadeout 1
 
     scene bg hospital2
+    show giorno normal at left
     with fade
+
 
     g "I hold my dying father’s hand."
     g "He looks at me with his kind and now weak eyes, his grip on my hand tightens."
@@ -172,10 +191,11 @@ label choice3_3:
 
 #CONTINUE
 label choice3_done:
-
-    #play music "audio/track2.mp3" fadeout 1
+    stop music fadeout 1
+    play music "audio/track2.ogg" fadeout 1
 
     scene bg courtyard
+    show giorno normal at left
     with fade
 
     g "I go through all the boring but heartbreaking shit required after someone you love dies."
@@ -187,6 +207,8 @@ label choice3_done:
     g "It's a bit childish for my taste, but I figure today is about the past, so might as well."
     g "I let my sister drive home without commenting about driving drunk. Its her fathers funeral, I know the grief will be sobering enough to keep her safe."
     g "Once I finish my conversation, I see my father's old crew begin to slowly surround me. They silently gesture for me to enter a car."
+
+    show giorno normal at center with move
 
 #CHOICE 4
 menu:
@@ -207,8 +229,14 @@ label choice4_2:
 
         M "Well its a good thing we ain’ strangers."
 
+        show mista normal behind giorno with dissolve:
+            xalign 0.70
+            yalign 1.00
+
         g "A man about my age slings his arm around me."
         g "He’s young with short black hair and pretty damn handsome."
+
+
 
         M "We’re friends of your father. Real good friends."
 
@@ -221,6 +249,10 @@ menu:
             M "I knew ya’d get it."
 
             g "He guides me slightly forcefully into the car."
+
+            hide giorno normal with moveoutright
+            hide mista normal with moveoutright
+
             g "My mind is distracted by thoughts of my father."
             g "I don’t like Mista, I find his light hearted behavior disrespectful at a wake."
             g "I remain silent despite his chatter for the entire drive."
@@ -229,6 +261,9 @@ menu:
 
         "\"You mean employees don’t ya boys?\"":
             $trueMobster += 1;
+
+            show mista normal at right with move
+            show giorno normal at left with move
 
             g "Mista looks at the rest of the gang a touch confused, but then re-locks with my gaze."
 
@@ -241,6 +276,11 @@ menu:
             g "My tone changes as I swear and I see them pay attention accordingly."
             g "I open the door of the car that they were guiding me towards, and I enter."
             g "Mista enters around the opposing side."
+
+            hide giorno normal with moveoutleft
+            hide mista normal with moveoutright
+
+
             g "I don’t care where they’re taking me, all that matters is that they’ll listen."
 
             jump choice4_done
@@ -248,6 +288,8 @@ menu:
 
 #CONTINUE
 label choice4_done:
+    stop music fadeout 1
+    play music "audio/track3.ogg" fadeout 1
 
     scene bg casino
     with fade
