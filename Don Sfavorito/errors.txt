@@ -2,21 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 33: unexpected EOF while parsing
-    0;
-      ^
-
-File "game/script.rpy", line 35: unexpected EOF while parsing
-    0;
-      ^
-
-File "game/script.rpy", line 36: unexpected EOF while parsing
-    0;
-      ^
-
-File "game/script.rpy", line 37: unexpected EOF while parsing
-    0;
-      ^
+File "game/script.rpy", line 255: Line is indented, but the preceding with statement statement does not expect a block. Please check this line's indentation.
+    g "Mista and the rest of the gang lead me into the back room of a casino."
+    ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Mon Apr 27 14:24:52 2020
+Mon Apr 27 20:46:23 2020
