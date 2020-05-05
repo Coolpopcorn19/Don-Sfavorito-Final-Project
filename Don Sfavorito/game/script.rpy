@@ -56,12 +56,13 @@ transform right:
 define g = Character("") #USED FOR GIORNO'S INTERNAL THOUGHTS
 define G = Character("Giorno") #USED FOR GIORNO'S DIALOGUE
 
-define B = Character("Bucciarati")
+define Q = Character("???") #USED FOR UNKNOWN CHARACTERS BEFORE WE KNOW THEIR NAMES
+
 define M = Character("Mista")
 define A = Character("Abbacchio")
-define N = Character("Narancia")
 define F = Character("Fugo")
-define T = Character("Trish")
+define J = Character("Joseph")
+define Mor = Character("Moretti")
 
 define D = Character("Dio")
 
