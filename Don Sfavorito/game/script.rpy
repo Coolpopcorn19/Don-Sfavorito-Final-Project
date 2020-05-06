@@ -36,6 +36,11 @@ default choice1var = 0
 default choice2var = 0
 default choice3var = 0
 default choice4var = 0
+default choice5var = 0
+default choice6var = 0
+default choice7var = 0
+default choice8var = 0
+default choice9var = 0
 
 
 #DECLARE TRANSFORMS HERE
@@ -43,8 +48,14 @@ default choice4var = 0
 transform left:
     xalign 0.0
     yalign 1.0
+transform midleft:
+    xalign 0.25
+    yalign 1.0
 transform center:
     xalign 0.5
+    yalign 1.0
+transform midright:
+    xalign 0.75
     yalign 1.0
 transform right:
     xalign 1.0
@@ -56,21 +67,22 @@ transform right:
 define g = Character("") #USED FOR GIORNO'S INTERNAL THOUGHTS
 define G = Character("Giorno") #USED FOR GIORNO'S DIALOGUE
 
-define Q = Character("???") #USED FOR UNKNOWN CHARACTERS BEFORE WE KNOW THEIR NAMES
 
 define M = Character("Mista")
 define A = Character("Abbacchio")
 define F = Character("Fugo")
-define J = Character("Joseph")
-define Mor = Character("Moretti")
-
 define D = Character("Dio")
+define Q = Character("???")
+define J = Character("Joseph")
+define W = Character("Waitress")
+define O = Character("Moretti")
 
 #GAME START
 
 label start:
 
 #START SCENE 1
+
     play music "audio/track1.ogg" fadeout 1
 
     scene bg hospital2
@@ -89,7 +101,7 @@ label start:
     D "-provide a decent fuckin’ life for ya family."
 
     g "His gaze lowers to the hospital blanket he lays under."
-    g "My father, Dio Costa, is... was... a capo of the vicious Josuke Moratti."
+    g "My father, Dio Costa, is... was... a capo of the vicious Josuke Moretti."
     g "I never wanted for anything in my entire life, and it was thanks to this man laying before me."
     g "He lays here with stage 4 liver cancer. I always knew he drank too much, but I never felt it my place to say anything."
     g "But that was then, this is now."
@@ -193,6 +205,7 @@ label choice3_3:
 #CONTINUE
 label choice3_done:
     stop music fadeout 1
+
     play music "audio/track2.ogg" fadeout 1
 
     scene bg courtyard
@@ -290,18 +303,437 @@ menu:
 #CONTINUE
 label choice4_done:
     stop music fadeout 1
+
     play music "audio/track3.ogg" fadeout 1
 
     scene bg casino
     with fade
 
-    g "Mista and the rest of the gang lead me into the back room of a casino."
+    show giorno normal at left
+    show mista normal at midleft behind giorno
+    show fugo normal at midright
+    show abbacchio normal at right behind fugo
+
+
+    g "Mista and the rest of the gang led me into the back room of a casino."
     g "I'm a touch shocked at how young the crew is."
     g "The oldest member stands at the back of the room, I figure he’s in his late 20s."
+
+    hide mista with dissolve
+    hide fugo with dissolve
+
+
     g "He stands disinterested and borderline disgusted, but his gaze remains straight ahead, unwilling to meet mine."
+    g "Based on my fathers notes, his name is Abbacchio. I’d compare him to a rook."
+    g "He’s noteworthy for having taken several stash houses during the 2009 Cappelli takeover."
+    g "There’s no doubt about his skills, but he’s got the grace of a bull and half as much patience."
+
+    Q "Giorno!"
+
+    g "I was snapped out of my thoughts by a familiar voice."
+
+    hide abbacchio with dissolve
+
+    show joseph normal at center behind giorno with dissolve
+
+    G "Joseph! God is it good to see a familiar face."
+
+    show joseph normal at midleft with move
+
+    g "He closed the gap from his seat to me and hugged me."
+
+    J "It’s good to see you too Gio, I feel fuckin’ terrible about pops."
+
+    g "Joseph was my cousin, but ever since his father died on “company business” and his family moved in with us, he’s basically been my brother."
+
+    G "Yeah me too Jojo."
+
+    g "The scrawny man who had been laying on the couch since I entered spoke up."
+
+    show fugo normal at right with dissolve
+
+    Q "Jojo?"
+
+    g "He cackled to himself and went back to cleaning his fingers with a pocket knife."
+
+#CHOICE 5
+menu:
+         "\"I feel like using a knife to clean your nails probably ends up doing more harm than good.\"":
+            jump choice5_1
+
+         "\"You got a problem?\"":
+            jump choice5_2
+
+label choice5_1:
+        $choice5var = 1
+
+        Q "Glad I asked."
+
+        g  "My fathers crew was about as welcoming as I remember."
+        jump choice5_done
+
+label choice5_2:
+        $choice5var = 2
+        Q "Not at the moment no."
+        jump choice5_done
+
+#CONTINUE
+label choice5_done:
+
+    J "Fugo show a little respect, he’s about to be the newest Capo."
+
+    g "A sharp voice cut through the room."
+
+    show abbacchio normal at midright with dissolve
+
+    A "He’s not ANYTHING until Moretti approves him."
+
+    J "Yeah that’s cuz you don’t know him, this kids mind is like a steel trap."
+    J "Ain’t that right Gio?"
+
+#CHOICE 6
+menu:
+        "\"Wait Capo?\"":
+            jump choice6_1
+
+        "\"Snap snap, goes the trap.\"":
+            jump choice6_2
+
+label choice6_1:
+        $choice6var = 1
+
+        g "Abbachio leaned his hand on his thigh and groaned."
+
+        A "Mista, you didn’t fill him in?"
+
+        show mista normal at center with dissolve
+
+        M "Moretti called in a half hour ago, said he wanted to talk to the kid himself."
+        jump choice6_done
+
+label choice6_2:
+        $choice6var = 2
+
+        g "I immediately got the distinct feeling that “snap snap goes the trap” was the wrong thing to say."
+
+        show mista normal at center with dissolve
+
+        M " … Anyway"
+        jump choice6_done
+
+#CONTINUE
+label choice6_done:
+
+    M " Moretti said that that he wants Jo n’ Fugo to come with the kid to Stratiacellis on fourth."
+
+    A "He wants Joseph and Fugo too? You think Moretti’s gonna have em run a-"
+    M "Seems like it."
+
+    g "Abbachio’s face seemed to grow pensive for a moment."
+
+    A "Good, no point in starting in the shallow end in this business."
+
+    g "Joseph's warm expression disappeared. Fugo’s smile faded into a stern calm."
+    g "I tried to begin reasoning what action would involve the two of them, but I figured I’d find out soon enough."
+    g "The silence hung in the air for a few moments."
+
+    J "Come on, bad manners to keep the Don waiting."
+
+    F "That it is."
+
+    g "Fugo kicked his feet off the couch and quickly stood."
+    g "He stretched his neck and then his gaze turned to Joseph, who in turn looked at me and gestured towards the door with his head."
+    g "I walked out the door and they followed close behind."
+
+    hide giorno with moveoutleft
+    hide joseph with moveoutleft
+    hide fugo with moveoutleft
+
+    scene bg casino2
+    show giorno normal at left
+    with fade
+
+    g "As soon as the door closed the sound of Mista's loud voice was immediately silenced by the noise of the Casino."
+    g "I spent a lot of years in the lobby here doing homework while my dad worked, but I had only been to the play floor itself a handful of times."
+    g "Old men who reeked of booze littered the tables, almost all smoking cigars and smiling wide."
+    g "A good deal of them had beautiful women next to them."
+    g "When I was younger I actually developed the impression that it was a rather common tradition for fathers to take their daughters to casinos."
+    g "Ah the innocence of youth, I manuerved past the cramped hallways of slot machines to the parking lot."
+
+    stop music fadeout 1
+
+    play music "audio/track2.ogg" fadeout 1
+
+    scene bg dodge
+    show giorno normal at left
+    show joseph normal at midright
+    show fugo normal at right behind joseph
+    with fade
+
+    F "Alright who’s driving?"
+
+    J "Figured I would."
+
+    g "Fugo smiled and shook his head."
+
+    F "Why am I not at all surprised you’d say that?"
+
+    g "Joseph smiled back and slipped his keys out of his pocket."
+    g "I heard the unmistakable beep of a car unlocking and turned to see a cherry red Dodge Charger."
+    g "I now understood Joseph's smile was one of pride, bordering on infatuation."
+    g "Joseph's eyes met mine and he raised his eyebrows."
+
+    J "Impressed?"
+
+#CHOICE 7
+menu:
+        "\"Seems like it’d get a lot of parking tickets.\"":
+            jump choice7_1
+
+        "\"It’s nice, but in this line of work flash can be a liability.\"":
+            $trueMobster += 1;
+            jump choice7_2
+
+label choice7_1:
+        $choice7var = 1
+        jump choice7_done
+
+label choice7_2:
+        $choice7var = 2
+        J "Its my friggin dream car, its worth it."
+        jump choice7_done
+
+#CONTINUE
+label choice7_done:
+
+    play sound "audio/driving.ogg" fadeout 1
+
+    scene bg car
+    with fade
+
+    g "Fugo took shotgun and Joseph told him he needed to take the back seat."
+    g "Fugo complained but Joseph insisted."
+    g "We drove in silence for a bit until Fugo stuck his head between our seats."
+
+    F "You know what the boss is gonna make ya do right?"
+
+    J "Fugo, the boss said he wanted to do the talking."
+
+    F "Jesus Jo, it's not like he thinks Moretti’s gonna ask him to pick flowers."
+
+    J "Still."
+
+    G "What kind of man is Moretti?"
+    g "Fugo chuckled."
+
+    J "A bad man. I mean, shit, most of us are obviously but he’s different, doesn’t really care about the family."
+
+    F "Oi! Careful where you say that. Its a death sentence if Moretti hears you guys saying that."
+
+    g "Fugo Cucinelli's exploits were covered equally well in my dads notebook."
+    g "I’d compare him to the knight, he’s erratic and effective."
+    g "He’s got a knack for sniffing out and infiltrating drug rings like no other."
+    g "He pulls in more cash than any other of my dad’s Lieutenants, if he didn’t speak his mind so often he might be a Capo himself."
+
+    F "Not as if any of those slow fucks could ever get the drop on me."
+
+    J "Yeah I’m sure they wouldn’t gun you down without a second thought."
+
+    F "See Jo? That’s why you’re an asshole, ya got no faith."
+
+    G "You gonna take that Joseph?"
+
+    g "We chuckled for a few moments after that."
+    g "But the silence returned and I became fully aware of what we were on our way to do."
+
+    stop sound fadeout 1
+
+    g "After a while Joseph pulled into a parking lot and Fugo became more attentive to our surroundings."
+
+    J "Alright just speak clearly, and confidently, and things’ll be fine."
+
+    F "Yeah and tell a joke."
+    J "Fugo, shut the fuck up. Don’t try to be funny."
+
+    G "Yeah I wasn’t planning on it."
+
+    stop music fadeout 1
+
+    play music "audio/track4.ogg" fadeout 1
+
+    scene bg restaurant
+    show giorno normal at left
+    show joseph normal at midright
+    show fugo normal at right behind joseph
+    with fade
+
+    g "We got out of the car and walked along the concrete sidewalk into the Restaurant."
+    g "Stratiacellis was an incredibly nice restaurant, the kind I would go to back when my Mom was still with us."
+    g "We stood in the seating area for only a moment, Fugo put a toothpick in his mouth and locked eyes with the host."
+    g "The hosts eyes widened slightly upon noticing Fugo but his twisted into an accommodating smile nonetheless, he walked briskly over to the waitress behind the podium and whispered something to her."
+    g "Her eyes widened similarly to how his did at first but she promptly walked up to us and began speaking."
+
+    W "Would you gentlemen like to follow me?"
+    F "Gentlemen? Darlin’ I’m flattered."
+
+    g "Joseph audibly scoffed and looked to the waitress."
+
+    J "Lead the way."
+
+    g "She led us up stairs that were placed along the walls of the main dining room."
+    g "Chandeliers were posted along the ceiling, softly illuminating the white cloth dining tables."
+    g "The seats were packed with people in expensive clothing, but the volume of the room was surprisingly quiet."
+    g "The second floor was smaller and had less customers, but appeared to be an even more exclusive part of the restaurant."
+    g "The upstairs had light gold paint with paintings of angels and civilizations on the walls."
+    g "She was leading us towards a double set of red doors in the center of the back wall."
+
+    scene bg restaurant2
+    show giorno normal at left
+    with fade
+
+    g "Once we entered it became immediately clear who Don Moretti was."
+
+    show moretti normal at right with dissolve
+
+    g "The white cloth table had only one seat and plate of food, the man behind the dish was slightly withered with a bit of heft to him."
+    g "He wore a black pinstripe suit with a red pocket square, despite the fact it looked as if he couldn’t enjoy anything, he ate the pasta with a quiet determination."
+    g "Two men in suits stood behind him with their hands held by their waists."
+    g "Moretti finished his bite and wiped his mouth with his napkin"
+
+    O "So, Giorno Costa, I’m sure you have some idea why I’ve asked you here today."
+
+    G "My father, Dio, was your Capo. Since he’s now perished I am to be tested as his replacement in accordance with the Roman Codes."
+
+    O "Oh so you know about the codes, I can see he didn’t raise a slouch. Though given where you’ve come from I do have concerns about your back-bone. Not to speak ill of the dead of course."
+
+#CHOICE 8
+menu:
+        "\“My Father was a great man.\"":
+            jump choice8_1
+
+        "\"We all choose this path for different reasons, in my mind his loyalty outweighed his lack of cruelty.\"":
+            $trueMobster += 1;
+            jump choice8_2
+
+label choice8_1:
+        $choice8var = 1
+        O "A good man, for sure."
+        jump choice8_done
+
+label choice8_2:
+        $choice8var = 2
+        O "Well put, but a little idealistic."
+        jump choice8_done
+
+#CONTINUE
+label choice8_done:
+    O "His memory is certainly one that’ll stay with me, nonetheless I’ve got the perfect job to see how you stack up. I see you’ve met Joseph and Fugo."
+
+    G "I have."
+
+    O "They’re good men to know, I like to call em’ my cleaners. You know why?"
+    O "Because they clean something?"
+    O "Technically correct but a poor sport of an answer. Its because if I have a problem, or a mess is made, they clean it up."
+    O "Like if some stupid fuck doesn’t give me my money or decides he’s gonna pull the wool over my eyes they can clean em off the face of the earth."
+
+    G "And you want me to help them clean something."
+
+    O "You really should let people finish their own thoughts kid, but yeah, I wanna see how you clean up."
+
+    g "My father, a fuckin Capo, died of lead poisoning."
+    g "Between that and this guys attitude I’m figurin Jojo is right about this guy not giving a shit about the family."
+    g "Personal Vendettas are bad for business, but some things can’t be forgiven."
+    g "Something didn’t add up, so I figured the best thing for this situation was to go along with Moretti for now."
+
+    G "Lucky for you, I clean up nice."
+
+    O "Lucky for me, Hah."
+
+    g "Moretti cracked a smile but it was unnatural."
+    g "It almost feels like he’s the type of man who couldn’t grin without looking villainous."
+
+    O "Well fuck it up, and we can test which one of us is lucky."
+    O "Being the kid of a Capo might get you an interview, but there’s not even a chance I’d consider some fuckin’ goombah being let into this family."
+    O "Joseph, Fugo, you understand how important your assistance in this test is then right?"
+
+    J "Yes Don."
+
+    F "Absolutely."
+
+    O "Then get the fuck outta here, and Giorno if you’re feeling like you can’t do this shit, then leave and never contact us again."
+    O "No hard feelings, out of respect for your father we let you go, So whaddya think, this shit really for you?"
+
+#CHOICE 9
+menu:
+        "\"Yes.\"":
+            jump choice9_1
+
+        "\"No.\"":
+            jump choice9_2
+
+label choice9_1:
+        $choice9var = 1
+        O "Good then, don’t let the door hit your ass on the way out"
+        jump choice9_done
+
+label choice9_2:
+        $choice9var = 2
+        #INSERT DIALOGUE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        jump choice9_done
+#CONTINUE
+label choice9_done:
+    O "Good luck then Giorno."
+
+    g "He gestured with his hands out of the door."
+    g "It might’ve been a good idea to say something nice then but all I could do was leave fast."
+    g "Joseph and Fugo followed quickly after me. I guess they we’re trying to give the impression of unity."
+    g "They must have been loyal to my father, but maybe that’s just something I want to believe."
+
+    hide giorno with moveoutleft
+
+    stop music fadeout 1
+
+    #play music "audio/track5.ogg" fadeout 1
+
+    play sound "audio/driving.ogg" fadeout 1
+
+    scene bg car
+    with fade
+
+    g "We drove away for a few minutes quietly until Joseph broke the silence."
+
+    J "Hey Giorno… You know where Moretti wants us to take you to right?"
+
+    G "Yes, Joseph."
+
+    g "I know he was just trying to be nice but I was feeling a touch overfraught at the moment."
+
+    J "… And you know that he expects for you to be the-"
+    G "YES, Joseph."
+
+    g "Moretti expected me to kill a man, today, the same day as the death of my father."
+    g "The clock on the dashboard read 9:47. Quickest 7 hours of my life."
+    g "This afternoon I was begging for a miracle, now I’d be killing someone while they’re begging for the same thing."
+    g "I could have left though, from here on out, Its all or nothing."
+    g "The drive proceeded in silence. While we were arriving I realized what piece Moretti would be; the king."
+    g "He might be a great leader but his individual strength was remarkably weak."
+    g "Relying on cruelty over tactics has left him with an incredible blind spot. But he was the man giving ME the orders."
+    g "I began to think about my own weaknesses before my attention was pulled back to reality. "
+    g "Without me even realizing it the rest of the drive had proceeded."
+
+    stop sound fadeout 1
+
+    stop music fadeout 1
+
+    scene bg courtyard
+    with fade
+
+    J "Well..."
+
+    F "Jesus christ can we stop tip-toeing around this? His dad died today, maybe" #CONTINUE SCRIPT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 #GAME END
-    g "You've reached the end of the script, for now."
+    g "You've reached the end of the script for now."
     g "Thanks for playing!"
 return

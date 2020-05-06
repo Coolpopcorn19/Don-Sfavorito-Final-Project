@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 261, in script
-    show mista normal at right with move(.1)
-TypeError: 'MoveInterpolate' object is not callable
+  File "game/script.rpy", line 523, in script
+    with fade
+IOError: Couldn't find file 'audio/track4.ogg'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 261, in script
-    show mista normal at right with move(.1)
+  File "game/script.rpy", line 523, in script
+    with fade
   File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 1389, in execute
     renpy.exports.with_statement(trans, paired)
   File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\exports.py", line 1601, in with_statement
@@ -18,11 +18,23 @@ Full traceback:
     clear=clear)
   File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 3047, in interact_core
-    new_widget=layers_root)
-TypeError: 'MoveInterpolate' object is not callable
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 3380, in interact_core
+    renpy.audio.audio.periodic()
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\audio\audio.py", line 1060, in periodic
+    six.reraise(exc[0], exc[1], exc[2])
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\audio\audio.py", line 1038, in periodic_thread_main
+    periodic_pass()
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\audio\audio.py", line 979, in periodic_pass
+    c.periodic()
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\audio\audio.py", line 457, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\audio\audio.py", line 73, in load
+    rv = renpy.loader.load(fn)
+  File "D:\Assorted\Classes\Game Stuff\Renpy\renpy-7.3.5-sdk\renpy\loader.py", line 576, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'audio/track4.ogg'.
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Don Sfavorito 1.0
-Tue Apr 28 12:38:00 2020
+Tue May 05 15:32:41 2020

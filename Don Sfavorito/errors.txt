@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 237: expected 'comma or end of line' not found.
-    behind giorno
-    ^
+File "game/script.rpy", line 337: end of line expected.
+    show joseph normal at center with dissolve behind giorno
+                                               ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Tue Apr 28 12:11:50 2020
+Tue May 05 18:30:56 2020
