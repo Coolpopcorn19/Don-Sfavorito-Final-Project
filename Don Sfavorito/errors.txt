@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 337: end of line expected.
-    show joseph normal at center with dissolve behind giorno
-                                               ^
+File "game/script.rpy", line 1183: multiple behind clauses are prohibited.
+    show joseph normal at midright behind fugo behind giorno
+                                                     ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Tue May 05 18:30:56 2020
+Fri May 08 18:39:03 2020
